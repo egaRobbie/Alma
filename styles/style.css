@@ -1431,7 +1431,7 @@ header.fixed .header-content {
 .showmenu {
   position: relative;
   top: 27px;
-  right: 10px;
+  left: 180px;
   z-index: 999;
   cursor: pointer;
   background: -webkit-linear-gradient(left, #18b760, #e9bf3d 50%, #18b760);
