@@ -9,6 +9,7 @@ import Image from 'next/image'
 
 import Modal from 'react-modal';
 import { MdCancel } from "react-icons/md";
+import { Router, useRouter } from 'next/router';
 
 
 
@@ -40,6 +41,8 @@ const Donate = (props) => {
 
 
     const [loading,setLoading] = useState(false)
+    const router = useRouter()
+
 
     const BASE_URL = 'https://eganow-mc-checkout.vercel.app/api/credentials'
 
@@ -84,6 +87,21 @@ const Donate = (props) => {
     getData();
   }, [])
 
+  useEffect(() => {
+    const handlePaymentMessage = (event) => {
+      if (event.data === "successful") {
+        router.push("/payment_status?status=success");
+      } else if (event.data === "failed") {
+        router.push("/payment_status?status=failed");
+      }
+    };
+    window.addEventListener("message", handlePaymentMessage);
+
+    return () => {
+      window.removeEventListener("message", handlePaymentMessage);
+    };
+}, []);
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -98,7 +116,7 @@ const Donate = (props) => {
         e.preventDefault();
         setLoading(true)
         const postData = {
-            payerInfo: {
+            payer: {
                 first_name: formData.firstName,
                 last_name: formData.lastName,
                 email: formData.email,
@@ -148,10 +166,10 @@ const Donate = (props) => {
                                     <h2>Details</h2>
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                            <input type="text" required className="form-control" name="firstname" id="fname" placeholder="First Name" onChange={handleInputChange}/>
+                                            <input type="text" required className="form-control" name="firstName" id="fname" placeholder="First Name" onChange={handleInputChange}/>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                            <input type="text" required className="form-control" name="lastname" onChange={handleInputChange} id="name" placeholder="Last Name"/>
+                                            <input type="text" required className="form-control" name="lastName" onChange={handleInputChange} id="name" placeholder="Last Name"/>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
                                             <input type="email" required className="form-control" name="email" onChange={handleInputChange} id="email" placeholder="Email"/>
