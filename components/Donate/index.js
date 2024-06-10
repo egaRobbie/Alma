@@ -123,7 +123,7 @@ const Donate = (props) => {
                 mobile_number: formData.phone,
             },
             customer_id: "59B4F9195EC94D98",
-            callback_url: "http://localhost:3002/payment_status",
+            callback_url: "https://www.almafoundationngo.org/payment_status",
             amount: formData.amount,
             ip_address: ip,
             currency
