@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import Navbar from '../../components/Navbar'
 import PageTitle from '../../components/pagetitle'
-import PaymentSuccess from '../../components/PaymentSuccess'
+import PaymentSuccess from '../../components/paymentsuccess'
 import Footer from '../../components/footer'
 import Scrollbar from '../../components/scrollbar'
 import { useSearchParams } from 'next/navigation'
