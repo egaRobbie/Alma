@@ -44,7 +44,8 @@ const Donate = (props) => {
     const router = useRouter()
 
 
-    const BASE_URL = 'https://intergrated-checkout.vercel.app'
+    const BASE_URL = 'https://checkout.eganowpay.com/'
+    // const BASE_URL = 'https://intergrated-checkout.vercel.app'
 
     const [ip, setIP] = useState("");
     const [currency, setCurrency] = useState('GHS');
