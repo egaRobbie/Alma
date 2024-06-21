@@ -44,7 +44,7 @@ const Donate = (props) => {
     const router = useRouter()
 
 
-    const BASE_URL = 'https://eganow-mc-checkout.vercel.app/api/credentials'
+    const BASE_URL = 'https://intergrated-checkout.vercel.app'
 
     const [ip, setIP] = useState("");
     const [currency, setCurrency] = useState('GHS');
@@ -116,22 +116,29 @@ const Donate = (props) => {
         e.preventDefault();
         setLoading(true)
         const postData = {
-            payer: {
-                first_name: formData.firstName,
-                last_name: formData.lastName,
-                email: formData.email,
-                mobile_number: formData.phone,
-            },
-            customer_id: "59B4F9195EC94D98",
+            // payer: {
+            //     first_name: formData.firstName,
+            //     last_name: formData.lastName,
+            //     email: formData.email,
+            //     mobile_number: formData.phone,
+            // },
+            // customer_id: "59B4F9195EC94D98",
+            // callback_url: "https://www.almafoundationngo.org/payment_status",
+            // amount: formData.amount,
+            // ip_address: ip,
+            // currency
+            username: process.env.NEXT_PUBLIC_USERNAME,
+            password: process.env.NEXT_PUBLIC_PASSWORD,
+            x_auth: process.env.NEXT_PUBLIC_X_AUTH,
+            amount: formData.amount?.toString(),
             callback_url: "https://www.almafoundationngo.org/payment_status",
-            amount: formData.amount,
-            ip_address: ip,
-            currency
+            payment_view_mode : "MODAL",
+            allowed_payment_method:"CARD"
         }
         try {
-            const sendRequest = await axios.post(`${BASE_URL}`, postData)
+            const sendRequest = await axios.post(`${BASE_URL}/api/credentials`, postData)
             if (sendRequest?.data?.public_key) {
-                const url = `https://eganow-mc-checkout.vercel.app/${sendRequest.data.public_key}`;
+                const url = `${BASE_URL}/${sendRequest.data.public_key}`;
                 setCheckoutUrl(url);
                 openModal()
                 setLoading(false)
