@@ -48,7 +48,7 @@ const Donate = (props) => {
     // const BASE_URL = 'https://intergrated-checkout.vercel.app'
 
     const [ip, setIP] = useState("");
-    const [currency, setCurrency] = useState('GHS');
+    const [currency, setCurrency] = useState('USD');
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -134,7 +134,8 @@ const Donate = (props) => {
             amount: formData.amount?.toString(),
             callback_url: "https://www.almafoundationngo.org/payment_status",
             payment_view_mode : "MODAL",
-            allowed_payment_method:"CARD"
+            allowed_payment_method:"CARD",
+            currency
         }
         try {
             const sendRequest = await axios.post(`${BASE_URL}/api/credentials`, postData)
