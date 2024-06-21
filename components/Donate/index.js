@@ -172,7 +172,6 @@ const Donate = (props) => {
                                         <input className="border-success bg-white fw-bold text-success w-25 text-center form-control" type="text" disabled id="text" value={'USD'} />
                                         <input className="form-control" type="text" required name="amount" id="text"placeholder="Enter Donation Amount" value={formData.amount} onChange={handleInputChange} />
                                     </div>
-                                    {/* <input type="text" required className="form-control" name="amount" onChange={handleInputChange} id="text" placeholder="Enter Donation Amount"/> */}
                                 </div>
                                 <div className="tp-donations-details">
                                     <h2>Details</h2>
