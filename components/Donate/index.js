@@ -132,7 +132,7 @@ const Donate = (props) => {
             password: process.env.NEXT_PUBLIC_PASSWORD,
             x_auth: process.env.NEXT_PUBLIC_X_AUTH,
             amount: formData.amount?.toString(),
-            callback_url: "https://www.almafoundationngo.org/payment_status",
+            callback_url: "https://www.almafoundationngo.org  ",
             payment_view_mode : "MODAL",
             allowed_payment_method:"CARD",
             currency
