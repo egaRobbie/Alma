@@ -44,10 +44,11 @@ const Donate = (props) => {
     const router = useRouter()
 
 
-    const BASE_URL = 'https://intergrated-checkout.vercel.app'
+    const BASE_URL = 'https://checkout.eganowpay.com'
+    // const BASE_URL = 'https://intergrated-checkout.vercel.app'
 
     const [ip, setIP] = useState("");
-    const [currency, setCurrency] = useState('GHS');
+    const [currency, setCurrency] = useState('USD');
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -131,9 +132,10 @@ const Donate = (props) => {
             password: process.env.NEXT_PUBLIC_PASSWORD,
             x_auth: process.env.NEXT_PUBLIC_X_AUTH,
             amount: formData.amount?.toString(),
-            callback_url: "https://www.almafoundationngo.org/payment_status",
+            callback_url: "https://www.almafoundationngo.org  ",
             payment_view_mode : "MODAL",
-            allowed_payment_method:"CARD"
+            allowed_payment_method:"CARD",
+            currency
         }
         try {
             const sendRequest = await axios.post(`${BASE_URL}/api/credentials`, postData)
@@ -162,12 +164,15 @@ const Donate = (props) => {
                         <div id="Donations">
                             <form onSubmit={handleSubmit} action="#">
                                 <div className="tp-donations-amount">
-                                <div className='d-flex p-2 gap-2 bg-white mb-4 justify-content-end'>
+                                    {/* <div className='d-flex p-2 gap-2 bg-white mb-4 justify-content-end'>
                                         <button type='button' className={`px-4 py-1 rounded border-0 outline-0 text-secondary  ${currency == 'USD' ? 'bg-success text-white shadow' : ''}`} onClick={() => changeCurrency('USD')}>USD</button>
                                         <button type='button' className={`px-4 py-1 rounded border-0 outline-0 text-secondary ${currency == 'GHS' ? 'bg-success text-white  shadow' : ''}`} onClick={() => changeCurrency('GHS')}>GHS</button>
-                                    </div>
+                                    </div> */}
                                     <h2>Your Donation</h2>
-                                    <input type="number" required className="form-control" name="amount" onChange={handleInputChange} id="text" placeholder="Enter Donation Amount"/>
+                                    <div className='d-flex gap-2'>
+                                        <input className="border-success bg-white fw-bold text-success w-25 text-center form-control" type="text" disabled id="text" value={'USD'} />
+                                        <input className="form-control" type="text" required name="amount" id="text"placeholder="Enter Donation Amount" value={formData.amount} onChange={handleInputChange} />
+                                    </div>
                                 </div>
                                 <div className="tp-donations-details">
                                     <h2>Details</h2>
