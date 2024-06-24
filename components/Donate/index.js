@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import pmt1 from '/public/images/checkout/img-1.png'
 import pmt2 from '/public/images/checkout/img-2.png'
@@ -40,7 +40,7 @@ const customStyles = {
 const Donate = (props) => {
 
 
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
 
@@ -72,36 +72,29 @@ const Donate = (props) => {
 
     });
 
-  const getData = async () => {
-    const res = await axios.get("https://api.ipify.org/?format=json");
-    setIP(res.data.ip);
-  };
 
-      // function to setCurrency
-      function changeCurrency(curr) {
+
+    // function to setCurrency
+    function changeCurrency(curr) {
         setCurrency(curr)
 
     }
 
-  useEffect(() => {
-    //passing getData method to the lifecycle method
-    getData();
-  }, [])
 
-  useEffect(() => {
-    const handlePaymentMessage = (event) => {
-      if (event.data === "successful") {
-        router.push("/payment_status?status=success");
-      } else if (event.data === "failed") {
-        router.push("/payment_status?status=failed");
-      }
-    };
-    window.addEventListener("message", handlePaymentMessage);
+    useEffect(() => {
+        const handlePaymentMessage = (event) => {
+            if (event.data === "successful") {
+                router.push("/payment_status?status=success");
+            } else if (event.data === "failed") {
+                router.push("/payment_status?status=failed");
+            }
+        };
+        window.addEventListener("message", handlePaymentMessage);
 
-    return () => {
-      window.removeEventListener("message", handlePaymentMessage);
-    };
-}, []);
+        return () => {
+            window.removeEventListener("message", handlePaymentMessage);
+        };
+    }, []);
 
 
     const handleInputChange = (e) => {
@@ -117,24 +110,14 @@ const Donate = (props) => {
         e.preventDefault();
         setLoading(true)
         const postData = {
-            // payer: {
-            //     first_name: formData.firstName,
-            //     last_name: formData.lastName,
-            //     email: formData.email,
-            //     mobile_number: formData.phone,
-            // },
-            // customer_id: "59B4F9195EC94D98",
-            // callback_url: "https://www.almafoundationngo.org/payment_status",
-            // amount: formData.amount,
-            // ip_address: ip,
-            // currency
+
             username: process.env.NEXT_PUBLIC_USERNAME,
             password: process.env.NEXT_PUBLIC_PASSWORD,
             x_auth: process.env.NEXT_PUBLIC_X_AUTH,
             amount: formData.amount?.toString(),
-            callback_url: "https://www.almafoundationngo.org/payment_status",
-            payment_view_mode : "MODAL",
-            allowed_payment_method:"CARD",
+            callback_url: "https://www.almafoundationngo.org  ",
+            payment_view_mode: "MODAL",
+            allowed_payment_method: "CARD",
             currency
         }
         try {
@@ -153,14 +136,14 @@ const Donate = (props) => {
         }
     };
 
-    return(
+    return (
         <div className="tp-donation-page-area section-padding">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2">
                         <div className="tp-donate-header">
                             <h2>Make a Donation</h2>
-                        </div>      
+                        </div>
                         <div id="Donations">
                             <form onSubmit={handleSubmit} action="#">
                                 <div className="tp-donations-amount">
@@ -171,28 +154,28 @@ const Donate = (props) => {
                                     <h2>Your Donation</h2>
                                     <div className='d-flex gap-2'>
                                         <input className="border-success bg-white fw-bold text-success w-25 text-center form-control" type="text" disabled id="text" value={'USD'} />
-                                        <input className="form-control" type="text" required name="amount" id="text"placeholder="Enter Donation Amount" value={formData.amount} onChange={handleInputChange} />
+                                        <input className="form-control" type="text" required name="amount" id="text" placeholder="Enter Donation Amount" value={formData.amount} onChange={handleInputChange} />
                                     </div>
                                 </div>
                                 <div className="tp-donations-details">
                                     <h2>Details</h2>
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                            <input type="text" required className="form-control" name="firstName" id="fname" placeholder="First Name" onChange={handleInputChange}/>
+                                            <input type="text" required className="form-control" name="firstName" id="fname" placeholder="First Name" onChange={handleInputChange} />
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                            <input type="text" required className="form-control" name="lastName" onChange={handleInputChange} id="name" placeholder="Last Name"/>
+                                            <input type="text" required className="form-control" name="lastName" onChange={handleInputChange} id="name" placeholder="Last Name" />
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
-                                            <input type="email" required className="form-control" name="email" onChange={handleInputChange} id="email" placeholder="Email"/>
+                                            <input type="email" required className="form-control" name="email" onChange={handleInputChange} id="email" placeholder="Email" />
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                            <input type="text" required className="form-control" name="phone" onChange={handleInputChange} id="phone" placeholder="phone"/>
+                                            <input type="text" required className="form-control" name="phone" onChange={handleInputChange} id="phone" placeholder="phone" />
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-                              
+
                                 <div className="submit-area sub-btn">
                                     <button type="submit" className="theme-btn submit-btn" disabled={loading}>
                                         {
@@ -200,7 +183,7 @@ const Donate = (props) => {
                                         }
                                     </button>
                                 </div>
-                            </form> 
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -208,33 +191,33 @@ const Donate = (props) => {
 
 
             <div>
-                    <Modal
-                        className=""
-                        onClick={() => alert("sdf")}
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Example Modal"
-                    >
-                        <div className=" text-center pb-md-4">
-                            <MdCancel
-                                onClick={closeModal}
-                                color='red'
-                                size={24}
-                                className=" text-center shadow-lg  modal-close "
-                            />
-                        </div>
-                        <iframe
-                            src={checkoutUrl}
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                margin: "0",
-                                backgroundColor: "transparent", // Semi-transparent background
-                            }}
-                        ></iframe>
-                    </Modal>
-                </div>
+                <Modal
+                    className=""
+                    onClick={() => alert("sdf")}
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <div className=" text-center pb-md-4">
+                        <MdCancel
+                            onClick={closeModal}
+                            color='red'
+                            size={24}
+                            className=" text-center shadow-lg  modal-close "
+                        />
+                    </div>
+                    <iframe
+                        src={checkoutUrl}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            margin: "0",
+                            backgroundColor: "transparent", // Semi-transparent background
+                        }}
+                    ></iframe>
+                </Modal>
+            </div>
         </div>
     )
 }

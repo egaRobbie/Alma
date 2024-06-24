@@ -23,7 +23,7 @@ const Features = (props) => {
                             </div>
                             <h2>The great journey to end poverty for good begins with a child.</h2>
                             
-                            <Link href="/" className="theme-btn">Donate Now<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
+                            <Link href="/donate" className="theme-btn">Donate Now<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
                         </div>
                     </div>
                     <div className="col-lg-7">
@@ -35,7 +35,7 @@ const Features = (props) => {
                                             <Image draggable="false" src={featuresimg} alt="" />
                                         </div>
                                         <div className="features-content">
-                                            <h2><Link onClick={ClickHandler} href="/cause-single/Financial-Help-for-Poor-Families">Cancer Treatment</Link></h2>
+                                            <h2>Cancer Treatment</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@ const Features = (props) => {
                                             <Image draggable="false" src={featuresimg2} alt="" />
                                         </div>
                                         <div className="features-content">
-                                            <h2><Link onClick={ClickHandler} href="/cause-single/Financial-Help-for-Poor-Families">Hospital Build</Link></h2>
+                                            <h2>Hospital Building</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@ const Features = (props) => {
                                             <Image draggable="false" src={featuresimg3} alt="" />
                                         </div>
                                         <div className="features-content">
-                                            <h2><Link onClick={ClickHandler} href="/cause-single/Financial-Help-for-Poor-Families">Environtment Recyle</Link></h2>
+                                            <h2>Environtmental work</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ const Features = (props) => {
                                             <Image draggable="false" src={featuresimg4} alt="" />
                                         </div>
                                         <div className="features-content">
-                                            <h2><Link onClick={ClickHandler} href="/cause-single/Financial-Help-for-Poor-Families">Food & Build Home</Link></h2>
+                                            <h2>Food & Building Homes</h2>
                                         </div>
                                     </div>
                                 </div>
