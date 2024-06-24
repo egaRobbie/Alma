@@ -64,7 +64,7 @@ const Footer = (props) =>{
                             <div className="contact-ft">
                                 <ul>
                                     <li><i className="fi flaticon-pin"></i>Accra, Ghana</li>
-                                    <li><i className="fi flaticon-call"></i>+233554022344</li>
+                                    <li><i className="fi flaticon-call"></i>0200440066</li>
                                     <li><i className="fi flaticon-envelope"></i>abraham.alfanfoundation@gmail.com</li>
                                 </ul>
                             </div>
