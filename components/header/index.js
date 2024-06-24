@@ -30,7 +30,7 @@ const Header = (props) => {
                                 <li><Link className="active" href="/home" title="">Home</Link></li>
                                 <li><Link href="/about" title="">About</Link></li>
                                 <li><Link href="/contact" title="">Contact</Link></li>
-                                <li><Link className="theme-btn" href="/donate">Donate Now </Link></li>
+                                <li><Link className="theme-btn" href="/donate">Donate Now <i className="fa fa-angle-double-right" aria-hidden="true"></i> </Link></li>
                             </ul>
                         </nav>
                     </div>
